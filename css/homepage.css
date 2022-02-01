@@ -1,0 +1,77 @@
+.plant-lover {
+    object-fit: cover;
+    height: 700px;
+    padding: 0;
+}
+
+#true-lover {
+    font-weight: bold;
+    line-height: 2;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+}
+
+.second {
+    background-color: #F9F6F0;
+}
+
+p {
+    display: inline;
+    text-align: center;
+}
+
+.our-plants-link {
+    display: block;
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
+
+.text {
+    margin-top: 150px;
+}
+
+.image {
+    height: 200px;
+}
+
+.review {
+    width: 200px;
+    border-radius: 50%;
+}
+
+#team-header {
+    display: block;
+    text-align: center;
+}
+
+.review-title {
+    font-style: italic;
+}
+
+h3 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.btn:hover {
+    background-color: seagreen;
+}
+
+.review:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    outline:3px solid black;
+}
+
+#true-lover:hover #lovers{
+    color: #D7263D;
+}
+
+@media only screen and (max-width: 770px) {
+    .our-plants-link {
+        width: 100px;
+    }
+    .disappear{
+        display: none;
+    }
+}
