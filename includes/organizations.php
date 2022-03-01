@@ -104,7 +104,7 @@ $organizations = Organization::fetch_organizations();
                     ),
                 );
 
-                $urlContents = "https://api.data.charitynavigator.org/v2/Organizations?app_id=afddb78a&app_key=55a0eabe9d78adf179bb50ccd1ee4cad&search=" . urlencode($_GET["search_term"]);
+                $urlContents = "https://api.data.charitynavigator.org/v2/Organizations?app_id=afddb78a&app_key=************&search=" . urlencode($_GET["search_term"]);
 
                 $data = file_get_contents($urlContents, false, stream_context_create($arrContextOptions));
 
