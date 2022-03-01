@@ -1,7 +1,6 @@
-.plant-lover {
+.volunteer-smile {
     object-fit: cover;
     height: 700px;
-    padding: 0;
 }
 
 #true-lover {
@@ -11,16 +10,11 @@
     font-family: 'Indie Flower', cursive;
 }
 
-.second {
+.background {
     background-color: #F9F6F0;
 }
 
-p {
-    display: inline;
-    text-align: center;
-}
-
-.our-plants-link {
+.our-places-link {
     display: block;
     width: 200px;
     margin-right: auto;
@@ -28,50 +22,81 @@ p {
     margin-top: 50px;
 }
 
-.text {
-    margin-top: 150px;
-}
-
-.image {
-    height: 200px;
-}
-
-.review {
-    width: 200px;
+.profile-pic {
+    object-fit: cover;
     border-radius: 50%;
-}
-
-#team-header {
+    width: 100px;
+    height: 100px;
     display: block;
-    text-align: center;
-}
-
-.review-title {
-    font-style: italic;
-}
-
-h3 {
-    font-family: 'Ubuntu', sans-serif;
+    margin: auto;
+    outline: 3px solid black;
 }
 
 .btn:hover {
     background-color: seagreen;
 }
 
-.review:hover {
+.profile-pic:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    outline:3px solid black;
-}
-
-#true-lover:hover #lovers{
-    color: #D7263D;
+    outline: 3px solid white;
 }
 
 @media only screen and (max-width: 770px) {
-    .our-plants-link {
+    .our-places-link {
         width: 100px;
     }
-    .disappear{
+
+    .disappear {
         display: none;
     }
+}
+
+.organ_pic {
+    display: block;
+    margin: auto
+}
+
+.form-inline {
+    width: 100%;
+    display: contents;
+}
+
+.custom-select {
+    width: 30% !important;
+}
+
+.date {
+    width: 15% !important;
+}
+
+.btn-outline-success {
+    width: 10%;
+}
+
+.box {
+    height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.difference {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9F6F0;
+    background-clip: content-box;
+}
+
+#environment {
+    color: #1ab188;
+}
+
+.chart {
+    height: 200px;
+    background: #e5e5e5;
+    padding: 30px;
+}
+
+.second{
+    font-size: large;
 }

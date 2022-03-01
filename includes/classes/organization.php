@@ -12,8 +12,9 @@ class Organization
     private $address;
     private $description;
     private $mission_statement;
+    private $image;
 
-    public function init($id, $name, $phone, $city, $address, $description,$mission_statement)
+    public function init($id, $name, $phone, $city, $address, $description, $mission_statement, $password, $image)
     {
         $this->id = $id;
         $this->name = $name;
@@ -22,6 +23,10 @@ class Organization
         $this->address = $address;
         $this->description = $description;
         $this->mission_statement = $mission_statement;
+        $this->password = md5($password);
+        if ($image != null) {
+            $this->image = $image;
+        }
     }
 
     public static function fetch_organizations()
@@ -33,9 +38,9 @@ class Organization
             $i = 0;
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    $user = new Organization();
-                    $user->instantation($row);
-                    $organizations[$i] = $user;
+                    $organization = new Organization();
+                    $organization->instantation($row);
+                    $organizations[$i] = $organization;
                     $i += 1;
                 }
             }
@@ -56,53 +61,53 @@ class Organization
                 $this->$attribute = $value;
         }
     }
-//
-//    public function find_user_by_id($id)
-//    {
-//        global $database;
-//        $error = null;
-//        $result = $database->query("select * from users where id='" . $id . "'");
-//
-//        if (!$result)
-//            $error = 'Can not find the user.  Error is:' . $database->get_connection()->error;
-//        elseif ($result->num_rows > 0) {
-//            $found_user = $result->fetch_assoc();
-//            $this->instantation($found_user);
-//        } else
-//            $error = "Can no find user by this id";
-//
-//        return $error;
-//    }
-//
-//    public function find_user_by_name($email, $password)
-//    {
-//        global $database;
-//        $error = null;
-//        $result = $database->query("select * from users where email='" . $email . "' and pass='" . $password . "'");
-//
-//        if (!$result)
-//            $error = 'Can not find the user.  Error is:' . $database->get_connection()->error;
-//        elseif ($result->num_rows > 0) {
-//            $found_user = $result->fetch_assoc();
-//            $this->instantation($found_user);
-//        } else
-//            $error = "Can no find user by this name";
-//
-//        return $error;
-//    }
+
+    public function login_cred_organ($id, $password)
+    {
+        global $database;
+        $error = '';
+        $password = md5($password);
+        $result = $database->query("select * from organizations where id='" . $id . "' and password='" . $password . "'");
+
+        if (!$result)
+            $error .= "<li> Something went wrong. Please try again. </li>";
+        elseif ($result->num_rows > 0) {
+            $found_organ = $result->fetch_assoc();
+            $this->instantation($found_organ);
+        } else
+            $error .= "<li> Wrong user or password. Please try again. </li>";
+
+        return $error;
+    }
+
+    public function find_organ_by_id($id)
+    {
+        global $database;
+        $error = null;
+        $result = $database->query("select * from organizations where id='" . $id . "'");
+
+        if (!$result)
+            $error = 'Can not find the organization.  Error is:' . $database->get_connection()->error;
+        elseif ($result->num_rows > 0) {
+            $found_user = $result->fetch_assoc();
+            $this->instantation($found_user);
+        } else
+            $error = "Can not find organization by this id";
+
+        return $error;
+    }
 
     public static function add_organization($organization)
     {
         global $database;
-        $error = null;
-        $sql = "INSERT INTO users(email ,firstname ,lastname ,phone ,city, pass) VALUES ('{$user->email}','{$user->firstname}','{$user->lastname}',{$user->phone},'{$user->city}','{$user->password}')";
+        $error = '';
+        $sql = "INSERT INTO organizations(id ,name ,phone ,city ,address, description, mission_statement, password, image) VALUES ({$organization->id},'{$organization->name}',{$organization->phone},'{$organization->city}','{$organization->address}','{$organization->description}','{$organization->mission_statement}','{$organization->password}','{$organization->image}')";
 
         $result = $database->query($sql);
         if (!$result)
-            $error = 'Can not add user.  Error is:' . $database->get_connection()->error;
+            $error = '<li>ID is already registered.</li>';
         return $error;
     }
-
 
     public function __get($property)
     {

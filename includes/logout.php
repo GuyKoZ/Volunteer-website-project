@@ -3,5 +3,5 @@
     global $session;
 
     $session->logout();
-    header('Location: ../homepage.php');
+    header('Location: ../index.php');
 ?>

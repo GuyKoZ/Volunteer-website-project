@@ -3,3 +3,9 @@
     display: block;
     text-align: center;
 }
+
+.google-map {
+    width: 60%;
+    height: 400px;
+    margin: auto;
+}
